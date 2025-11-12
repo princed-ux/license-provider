@@ -1,4 +1,4 @@
-flask
-requests
-flask-limiter
-gunicorn
+Flask==2.3.4
+requests==2.32.5
+Flask-Limiter==4.0.0
+gunicorn==21.2.0
