@@ -125,6 +125,17 @@ def list_licenses():
         rows = db.execute("SELECT id, key_hash, created_at, expires_at, activated_at, activation_id, revoked, metadata FROM licenses").fetchall()
         return jsonify({"success": True, "licenses": [dict(r) for r in rows]})
 
+# ---------------- ERROR HANDLER ----------------
+@app.errorhandler(Exception)
+def handle_exception(e):
+    app.logger.error("Unexpected error: %s", str(e))
+    # Always return clean JSON
+    return jsonify({
+        "success": False,
+        "message": "Internal server error. Please try again later."
+    }), 500
+
+
 # ---------------- RUN SERVER ----------------
 if __name__ == "__main__":
     init_db()
