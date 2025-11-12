@@ -1,1 +1,4 @@
-flask==2.3.3
+flask
+requests
+flask-limiter
+gunicorn
