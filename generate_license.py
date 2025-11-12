@@ -14,8 +14,9 @@ os.makedirs(ADMIN_FOLDER, exist_ok=True)
 ADMIN_KEYS_FILE = os.path.join(ADMIN_FOLDER, "keys.txt")
 ADMIN_JSON_FILE = os.path.join(ADMIN_FOLDER, "licenses.json")
 
-# Server DB (hashes only) - this will be uploaded to your online server
-SERVER_DB = os.path.join(ADMIN_FOLDER, "server_licenses.db")
+# Server DB (hashes only) - stored in project folder so Render can deploy it
+BASE_DIR = os.path.dirname(__file__)
+SERVER_DB = os.path.join(BASE_DIR, "licenses.db")
 
 print("✅ Admin-only folder (you see plaintext keys here):", ADMIN_FOLDER)
 
