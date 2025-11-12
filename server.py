@@ -22,8 +22,13 @@ SSL_KEY = os.environ.get("SSL_KEY", "key.pem")
 # ---------------- FLASK ----------------
 app = Flask(__name__)
 
-# Rate limiting to avoid abuse
-limiter = Limiter(app, key_func=get_remote_address, default_limits=["200 per day", "50 per hour"])
+# ---------------- RATE LIMITING ----------------
+# Updated for Flask-Limiter v2+ API
+limiter = Limiter(
+    key_func=get_remote_address,
+    default_limits=["200 per day", "50 per hour"]
+)
+limiter.init_app(app) 
 
 # ---------------- LOGGING ----------------
 LOG_FILE = os.path.join(BASE_DIR, "license_server.log")
