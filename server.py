@@ -92,7 +92,7 @@ def validate_license():
     k_hash = hash_key(license_key)
     row = get_license_row_by_hash(k_hash)
 
-    if row is None:
+    if row is None :
         return jsonify({"success": False, "message": "Invalid license."}), 403
 
     if row["revoked"]:
@@ -103,7 +103,7 @@ def validate_license():
         return jsonify({"success": False, "message": "License expired."}), 403
 
     # First activation
-    if row["activation_id"] is None:
+    if row["activation_id"] is None :
         activate_license(k_hash, install_id)
         return jsonify({"success": True, "message": "License activated.", "expires_at": row["expires_at"]})
 

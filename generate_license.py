@@ -123,3 +123,4 @@ if __name__ == "__main__":
         print("❌ Failed to save JSON:", e)
 
     print(f"\n✅ All {total} license(s) saved. Valid for {days_valid} days each.")
+  
