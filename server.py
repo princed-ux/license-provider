@@ -28,7 +28,7 @@ limiter = Limiter(
     key_func=get_remote_address,
     default_limits=["200 per day", "50 per hour"]
 )
-limiter.init_app(app) 
+limiter.init_app(app) #link limiter to app
 
 # ---------------- LOGGING ----------------
 LOG_FILE = os.path.join(BASE_DIR, "license_server.log")
